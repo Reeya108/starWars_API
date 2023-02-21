@@ -2,13 +2,16 @@
 The task 2 goes like following:
 Pull data for the the first movie in star wars
 Write the json data into a file named output.txt
-
-
 SUBTASKS -
 1. Output should be only list of names (first name & last name) of characters
 in the movie.
 2. Output should only print list of planet names used in the movie
 3. Output should only print list of vehicle names used in the movie.
+TODO EXERCISE-
+1. create a command line application of task_two
+python task_two.py people
+python task_two.py planet
+python task_two.py vehicle
 """
 
 import json
@@ -18,6 +21,7 @@ from pprint import pprint
 from typing import Dict, List
 
 from utils.fetch_data import hit_url, fetch_data
+
 
 FIRST_FILM_URL = "https://swapi.dev/api/films/1/"
 
@@ -57,11 +61,31 @@ def second_task(data_: Dict) -> List:
     return names
 
 
+def third_task(data_: Dict) -> List:
+    """pull data from swapi planets sequentially"""
+
+    planets = data_.get("planets")  # returns None by default
+
+    names = []
+    for planet in planets:
+        planet_data = hit_url(planet)
+        planet_data = planet_data.json()
+        names.append(planet_data.get("name"))
+
+    return names
+
+
 if __name__ == "__main__":
+
     # first task
     first_result = first_task()
-    pprint(first_result)
+    # pprint(first_result)
 
-    # second task
+    # second task : capture characters
     second_result = second_task(first_result)
-    pprint(second_result)
+    # pprint(second_result)
+
+    # third task : capture planets
+    third_result = third_task(first_result)
+    pprint(third_result)
+

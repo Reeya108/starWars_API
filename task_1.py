@@ -2,16 +2,11 @@
 ----------------------
 PROBLEM STATEMENT
 ----------------------
-
-
 The Star Wars API lists 82 main characters in the Star Wars saga.
-
 For the first task, we would like you to use a random number generator
 that picks a number between 1-82.
-
 Using these random numbers you will be pulling 15 characters
 from the API using Python.
-
 """
 
 import random
@@ -48,13 +43,10 @@ def generate_random_numbers(n: int = 15) -> List[int]:
 
 def get_url(resource_id: int, resource: str) -> str:
     """
-
-   Args:
-       resource_id:
-
-   Returns:
-
-   """
+    Args:
+        resource_id:
+    Returns:
+    """
 
     home_url = "https://swapi.dev"
     relative_url = "/api/{}/{}"
@@ -91,20 +83,23 @@ def main() -> None:
             "people", "films", "starships", "vehicles", "species", "planets"
         ]
     )
-
     arguments = parser.parse_args()
 
     print(f"parsed arguments are - {arguments}")
-    print(type(arguments))
-    print(arguments.count)
 
-    resources = generate_random_numbers(int(arguments.count))
+    # resources = generate_random_numbers(int(arguments.count))
 
-    # obj = ProduceChars(int(arguments.start), int(arguments.end), int(arguments.count))
+    obj = ProduceChars(
+        int(arguments.start),
+        int(arguments.end),
+        int(arguments.count)
+    )
 
+    resources = [element for element in obj]
+    print(f"resources - {resources}")
 
     print(f"[ INFO ] produced {len(resources)}"
-          f" random resource ids in range(1,83).")
+          f" random resource ids in range({arguments.start}, {arguments.end}).")
 
     data = []
     for resource_id in resources:
@@ -127,12 +122,12 @@ def main() -> None:
 
 if __name__ == "__main__":
     """
-   HOME-URL :: https://swapi.dev
-   relative-URL:: /api/people/1
+    HOME-URL :: https://swapi.dev
+    relative-URL:: /api/people/1
 
-   URL
-   https://swapi.dev/api/people/1/
+    URL 
+    https://swapi.dev/api/people/1/
 
-   """
+    """
 
     main()
