@@ -31,3 +31,6 @@ class Character(ResourceBase):
         response = hit_url(absolute_url)
         data = response.json()
         return data
+
+if __name__ == "__main__":
+    Character().get_count()

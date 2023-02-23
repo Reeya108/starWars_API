@@ -1,4 +1,5 @@
- TODO - import all resource classes here
+"""
+1. TODO - import all resource classes here
 2. TODO - get count of each resource
 3. TODO - get singular resource URL from each resource
     - for example,
@@ -54,4 +55,3 @@ if __name__ == "__main__":
     vehicles_data = Vehicle_(**vehicles_data)
 
     breakpoint()
-

@@ -74,6 +74,18 @@ def third_task(data_: Dict) -> List:
 
     return names
 
+def fourth_task(data_: Dict) -> List:
+    """pull data from swapi planets sequentially"""
+
+    vehicles = data_.get("vehicles")  # returns None by default
+
+    names = []
+    for vehicle in vehicles:
+        vehicle_data = hit_url(vehicle)
+        vehicle_data = vehicle_data.json()
+        names.append(vehicle_data.get("name"))
+
+    return names
 
 if __name__ == "__main__":
 
@@ -87,5 +99,8 @@ if __name__ == "__main__":
 
     # third task : capture planets
     third_result = third_task(first_result)
-    pprint(third_result)
+    #pprint(third_result)
 
+    # forth task : capture vehicles
+    fourth_result = fourth_task(first_result)
+    pprint(fourth_task)
