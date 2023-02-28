@@ -11,8 +11,8 @@
     - utilize`utils` package to produce random 3 numbers from resource ids
     - and pull data for them
 5. TODO - convert the script into CLI application
+6. TODO - pretty print output (from pprint import pprint)
 """
-
 
 # resource classes
 from resources.films import Film
@@ -33,9 +33,6 @@ from models.datamodels.species import Species_
 
 if __name__ == "__main__":
 
-    film_object = Film()
-    total_films = film_object.get_count()
-    print(total_films)
     character_data = Character().get_sample_data()
     character_data = Character_(**character_data)
 

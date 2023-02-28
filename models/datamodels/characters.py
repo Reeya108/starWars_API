@@ -6,10 +6,12 @@ from typing import List, Optional
 
 
 class Character_(BaseModel):
-class Character_(Base):
-    name: str
-    height: str
-    mass: str
+
+
+    class Character_(Base):
+        name: str
+        height: str
+        mass: str
 class Character_(BaseModel):
 
     obj = Character_(**external)

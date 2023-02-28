@@ -18,6 +18,8 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor,
 )
 
+breakpoint()
+
 cursor = connection.cursor()
 cursor.execute("SHOW DATABASES")
 results = cursor.fetchall()
